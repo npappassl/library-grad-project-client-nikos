@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { Book } from "app/book";
+import { Book } from './book';
 
 @Component({
   selector: 'booksList',
-  templateUrl: "app/templates/listRepeater.html",
+  templateUrl: 'app/templates/listRepeater.html',
 })
 export class BooksComponent  {
     @Input() booksS: Book[];
