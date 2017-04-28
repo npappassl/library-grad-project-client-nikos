@@ -1,6 +1,6 @@
 <h1>{{name}}</h1>
-<ul *ngIf="booksS">
-  <li *ngFor="let book of booksS; let iI = index">
-    {{ book.Title }} {{iI}}
+<ul *ngFor="let book of books; let i = index">
+  <li >
+    {{ book.Title }} {{i}}
   </li>
 <ul>

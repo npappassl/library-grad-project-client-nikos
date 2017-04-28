@@ -4,17 +4,17 @@ import { Book } from './book';
 @Component({
   selector: 'booksList',
   templateUrl: 'app/templates/listRepeater.html',
+  styles: [`
+    li{
+        background-color: lightcyan;
+        margin: 1em;
+        font-weight: 600;
+        color: red;
+        list-style: none;
+    }
+  `]
 })
 export class BooksComponent  {
-    @Input() booksS: Book[];
+    @Input() books: Book[];
     @Input() name: string;
-    // = [
-    // {
-    //     title:"the best Book",
-    //     ISBN:"231230198230192803"
-    // },
-    // {
-    //     title:"the best Book 2",
-    //     ISBN:"231230198230192803"
-    // }];
 }

@@ -9,24 +9,33 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class BookService {
     private booksUrl: string;
+    private headers = new Headers({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': '*',
+        'Access-Control-Allow-Headers': '*'
+    }); // ... Set content type to JSON
+    private options = new RequestOptions({ headers: this.headers }); // Create a request option
     constructor(private http: Http) {
         this.booksUrl = 'http://localhost:51918/api/books';
     }
     getBooks(): Observable<Book[]> {
-        let headers = new Headers({
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': '*', // "POST,GET,PUT,PATCH,DELETE,OPTIONS",
-            'Access-Control-Allow-Headers': '*'
-        }); // ... Set content type to JSON
-        let options = new RequestOptions({ headers: headers }); // Create a request option
 
          // ...using get request
-         return this.http.get(this.booksUrl, options)
+         return this.http.get(this.booksUrl, this.options)
                         // ...and calling .json() on the response to return data
                          .map((res: Response) => res.json())
                          // ...errors if any
                          .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    };
+    postNewBook(book: Book): Observable<Book[]> {
+            const body: string = JSON.stringify(book);
+            console.log(body);
+            console.log(book.Title);
+            return this.http.post(this.booksUrl, book, this.options)
+                .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+                // ...errors if any
+                .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     };
 // ======================================================================
          // const fetchProps = {

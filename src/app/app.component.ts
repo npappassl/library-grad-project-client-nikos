@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from './book.service';
 import { Book } from './book';
-// import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'my-app',
@@ -9,28 +8,27 @@ import { Book } from './book';
   template:
     `
         <h1>Hello {{name}}</h1>
-        <ul>
-            <li *ngFor="let book of books; let i = index">
-              {{ book.Title }} {{ book.Id }} {{i}}
-            </li>
-        </ul>
-        <booksList name="{{name}}" booksS="{{books}}"></booksList>
+        <booksList name="{{name}}" [books]="books"></booksList>
+        <postNewBookForm></postNewBookForm>
     `
 })
 export class AppComponent  implements OnInit {
-    books: Array<Book> = new Array<Book>(); // [new Book()];
+    books: Array<Book> = new Array<Book>();
     name = 'Angular';
+    listId: string;
     ngOnInit(): void {
         this.getBooks();
+    }
+    pushBooksToModel(books: Book[]): void {
+        this.books = books;
     }
     getBooks(): void {
       this.bookService.getBooks()
                         .subscribe(
-                            books => this.books = books,
+                            books => this.pushBooksToModel(books),
                             err => {
                                 console.log(err);
                             });
     }
     constructor(private bookService: BookService) { }
-
 }
