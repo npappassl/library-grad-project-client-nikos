@@ -5,5 +5,6 @@ export class Book {
         public ISBN: string,
         public Author: string,
         public PublishDate: string,
+        public isReserved: boolean,
     ) { }
 }

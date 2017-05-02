@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent }  from './app.component';
 import { BooksComponent } from './books.component';
 import { PostNewBookFormComponent } from './postNewBook.component';
+import { ReserveButtonComponent } from './reserve-button.component';
 
 @NgModule({
     imports: [
@@ -14,7 +15,7 @@ import { PostNewBookFormComponent } from './postNewBook.component';
     ],
     declarations: [
         AppComponent, BooksComponent,
-        PostNewBookFormComponent
+        PostNewBookFormComponent, ReserveButtonComponent
     ],
     bootstrap:    [ AppComponent ]
 })

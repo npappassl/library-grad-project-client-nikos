@@ -1,6 +1,15 @@
-<h1>{{name}}</h1>
-<ul *ngFor="let book of books; let i = index">
-  <li >
-    {{ book.Title }} {{i}}
-  </li>
-<ul>
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Title</td>
+        <td>Author</td>
+        <td>IsReserved</td>
+    </tr>
+    <tr *ngFor="let book of books; let i = index">
+        <td>{{book.Id}}</td>
+        <td>{{ book.Title }}</td>
+        <td>{{ book.Author }}</td>
+        <td>{{ book.isReserved }}</td>
+        <td><reserve-button [hidden]="book.isReserved"  (onFinished)="handleEventFinished($event)"  bookId="{{book.Id}}"></reserve-button></td>
+    </tr>
+<table>
