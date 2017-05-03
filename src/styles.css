@@ -1,5 +1,12 @@
+body{
+    background-color: #C1E1A6;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
 h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
+  color: #FF9009;
   font-size: 250%;
+}
+h2{
+    color: #FF9009;    
 }

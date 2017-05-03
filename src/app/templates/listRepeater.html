@@ -1,15 +1,15 @@
-<table>
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
     <tr>
-        <td class="bookIdRow">Id</td>
-        <td>Title</td>
-        <td>Author</td>
-        <td>IsReserved</td>
+        <th class="bookIdRow">Id</th>
+        <th class="mdl-data-table__cell--non-numeric">Title</th>
+        <th class="mdl-data-table__cell--non-numeric">Author</th>
+        <th>IsReserved</th>
     </tr>
     <tr *ngFor="let book of books; let i = index">
         <td class="bookIdRow">{{book.Id}}</td>
-        <td>{{ book.Title }}</td>
-        <td>{{ book.Author }}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{ book.Title }}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{ book.Author }}</td>
         <td>{{ book.isReserved }}</td>
-        <td><reserve-button [hidden]="book.isReserved"  (onFinished)="handleEventFinished($event)"  bookId="{{book.Id}}"></reserve-button></td>
+        <td class="tdButton"><reserve-button [isReserved]="book.isReserved"  (onFinished)="handleEventFinished($event)"  bookId="{{book.Id}}"></reserve-button></td>
     </tr>
 <table>

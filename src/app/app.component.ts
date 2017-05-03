@@ -10,7 +10,7 @@ import { Reservation } from './reservation';
     `
         <h1>Library</h1>
         <booksList (onFinished)="handleEventFinished($event)" [(books)]="books"></booksList>
-        <postNewBookForm [(books)]="books"></postNewBookForm>
+        <postNewBookForm (onFinished)="handleEventFinished($event)" [(books)]="books"></postNewBookForm>
     `
 })
 export class AppComponent  implements OnInit {
@@ -33,7 +33,7 @@ export class AppComponent  implements OnInit {
                 console.log(res.BookId, i.Id);
                 return res.BookId === i.Id;
             });
-            console.log("curREs", curRes);
+            console.log('curREs', curRes);
             if (curRes.length === 1) {
                 i.isReserved = true;
             }else {
