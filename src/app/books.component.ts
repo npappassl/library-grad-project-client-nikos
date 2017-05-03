@@ -1,20 +1,37 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from './book';
+import { Reservation } from  './reservation';
 
 @Component({
   selector: 'booksList',
   templateUrl: 'app/templates/listRepeater.html',
+  styles: [`
+    table{
+        display: block;
+        height: 50vh;
+        overflow: scroll;
+
+    }
+    td{
+        background-color: #d3d3d4;
+        margin: 1em;
+        width: 30%;
+        font-weight: 600;
+        color: red;
+        list-style: none;
+    }
+    td.bookIdRow{
+        width: auto;
+    }
+  `]
 })
 export class BooksComponent  {
-    @Input() booksS: Book[];
+    @Input() books: Book[];
+    @Input() reservations: Reservation[];
     @Input() name: string;
-    // = [
-    // {
-    //     title:"the best Book",
-    //     ISBN:"231230198230192803"
-    // },
-    // {
-    //     title:"the best Book 2",
-    //     ISBN:"231230198230192803"
-    // }];
+    @Output() onFinished = new EventEmitter<boolean>();
+    handleEventFinished(event): void {
+        console.log("finished", event);
+        this.onFinished.emit(event);
+    }
 }

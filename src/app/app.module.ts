@@ -1,15 +1,22 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import { AppComponent }  from './app.component';
 import { BooksComponent } from './books.component';
-import { HttpModule } from '@angular/http';
+import { PostNewBookFormComponent } from './postNewBook.component';
+import { ReserveButtonComponent } from './reserve-button.component';
 
 @NgModule({
-  imports:      [ BrowserModule, HttpModule],
-  declarations: [
-    AppComponent,
-    BooksComponent
+    imports: [
+        BrowserModule, HttpModule,
+        FormsModule, ReactiveFormsModule
     ],
-  bootstrap:    [ AppComponent ]
+    declarations: [
+        AppComponent, BooksComponent,
+        PostNewBookFormComponent, ReserveButtonComponent
+    ],
+    bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
