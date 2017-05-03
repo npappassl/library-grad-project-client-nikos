@@ -20,6 +20,9 @@ import { Reservation } from  './reservation';
         color: red;
         list-style: none;
     }
+    td.bookIdRow{
+        width: auto;
+    }
   `]
 })
 export class BooksComponent  {
@@ -28,7 +31,7 @@ export class BooksComponent  {
     @Input() name: string;
     @Output() onFinished = new EventEmitter<boolean>();
     handleEventFinished(event): void {
-        console.log("finished",event);
+        console.log("finished", event);
         this.onFinished.emit(event);
     }
 }

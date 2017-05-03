@@ -1,12 +1,12 @@
 <table>
     <tr>
-        <td>Id</td>
+        <td class="bookIdRow">Id</td>
         <td>Title</td>
         <td>Author</td>
         <td>IsReserved</td>
     </tr>
     <tr *ngFor="let book of books; let i = index">
-        <td>{{book.Id}}</td>
+        <td class="bookIdRow">{{book.Id}}</td>
         <td>{{ book.Title }}</td>
         <td>{{ book.Author }}</td>
         <td>{{ book.isReserved }}</td>
