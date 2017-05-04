@@ -23,7 +23,7 @@ h2.clickable{
     text-shadow: 1px 2px 2px #383839;
 }
 h2.clickable:hover{
-    text-shadow: 2px 4px 5px #383839;
+    text-shadow: 2px 4px 5px #222224;
 }
 .pageButtonReveal{
     flex-grow: 1;

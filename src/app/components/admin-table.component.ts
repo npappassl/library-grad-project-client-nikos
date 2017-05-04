@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Book } from '../book';
+import { Book } from '../models/book';
 
 @Component({
   selector: 'adminTable',

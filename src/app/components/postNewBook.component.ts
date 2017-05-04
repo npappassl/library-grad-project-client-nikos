@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Book } from '../book';
+import { Book } from '../models/book';
 import { BookService } from '../book.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { BookService } from '../book.service';
                 <label>Author</label>
                 <input [value]="author" (input)="author=$event.target.value" placeholder="eg. John Keats"/>
                 <label>PublishDate</label>
-                <input [value]="publishDate" (input)="publishDate=$event.target.value" placeholder="eg. 14/10/2016"/>
+                <input type="date" [value]="publishDate" (input)="publishDate=$event.target.value" placeholder="eg. 14/10/2016"/>
 
             <button md-raised-button id="addNewBookButton" type="submit" [disabled]="!newBookForm.form.valid">Add</button>
         </form>
@@ -35,6 +35,7 @@ import { BookService } from '../book.service';
         label{
             margin: 1em auto;
             font-weight: 500;
+            font-size: 1.3em;
             color: #c1e1a6;
             display: block;
         }
@@ -49,7 +50,7 @@ import { BookService } from '../book.service';
             color: #383839;
             background-color: #c1e1a6;
             font-size: 1em;
-            padding: 5px 5px 5px 5px;
+            padding: 5px 5px 5px 15px;
         }
         input:active, input:focus, input:focus:hover{
             background-color: #dff;
@@ -81,8 +82,8 @@ export class PostNewBookFormComponent {
     publishDate = '';
     constructor(private bookService: BookService) { }
     onSubmit(event): void {
-        this.postNewBook();
         event.preventDefault();
+        this.postNewBook();
         this.formReset();
     }
     formReset(): void {

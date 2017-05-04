@@ -1,8 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { BookService } from './book.service';
 import { ReservationService } from './reservation.service';
-import { Book } from './book';
-import { Reservation } from './reservation';
+import { Book } from './models/book';
+import { Reservation } from './models/reservation';
 @Component({
   selector: 'my-app',
   providers: [BookService, ReservationService],
@@ -37,7 +37,6 @@ export class AppComponent  implements OnInit {
                         .subscribe(
                             books => {
                                 this.pushBooksToModel(books);
-
                             },
                             err => {
                                 console.log(err);
@@ -57,7 +56,7 @@ export class AppComponent  implements OnInit {
 const pushBooksToModelConst = function pushBooksToModelFunc(books: Book[]): void {
     if (this.reservations.length === 0 ) {
         setTimeout(function(){
-            this.pushBooksToModel(books);
+            pushBooksToModelConst(books);
         }, 1000);
         return;
     }

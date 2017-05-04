@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Book } from '../book';
-import { Reservation } from  '../reservation';
+import { Book } from '../models/book';
+import { Reservation } from  '../models/reservation';
 
 @Component({
   selector: 'booksList',

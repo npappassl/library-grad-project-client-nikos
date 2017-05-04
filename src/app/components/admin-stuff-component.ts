@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Book } from '../book';
+import { Book } from '../models/book';
 
 @Component({
   selector: 'adminStuff',
@@ -37,7 +37,7 @@ import { Book } from '../book';
    }
    #doAdminStuffButton{
      background-color: #ff9009;
-     color: #383839; 
+     color: #383839;
    }
    #closeAdmin{
        position: fixed;

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ReservationService } from '../reservation.service';
-import { Reservation } from '../reservation';
+import { Reservation } from '../models/reservation';
 @Component({
     selector: 'reserve-button',
     template: `<button md-raised-button [ngClass]="{'reserved': isReserved,'free': !isReserved}" [disabled]="isReserved" (click)="sendReservation()"></button>`,
