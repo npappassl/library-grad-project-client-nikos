@@ -17,11 +17,11 @@ export class BookService {
     }); // ... Set content type to JSON
     constructor(private http: Http) {
         this.booksUrl = 'http://localhost:51918/api/books';
+        this.options = new RequestOptions({ headers: this.headers }); // Create a request option
     }
     getBooks(): Observable<Book[]> {
-        const options: RequestOptions = new RequestOptions({ headers: this.headers }); // Create a request option
          // ...using get request
-         return this.http.get(this.booksUrl, options)
+         return this.http.get(this.booksUrl, this.options)
                         // ...and calling .json() on the response to return data
                          .map((res: Response) => res.json())
                          // ...errors if any
@@ -33,8 +33,16 @@ export class BookService {
         console.log(body);
         console.log(book.Title);
         return this.http.post(this.booksUrl, body, options)
-            .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
-            // ...errors if any
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+                    .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+                    // ...errors if any
+                    .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    };
+    deleteBookRequest(id: number): Observable<Book[]> {
+        const deleteUrl = this.booksUrl + '/' + id;
+        return this.http.delete(deleteUrl, this.options)
+                    // ...and calling .json() on the response to return data
+                     .map((res: Response) => res.json())
+                     // ...errors if any
+                     .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     };
 }

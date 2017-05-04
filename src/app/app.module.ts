@@ -1,12 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import { NgModule }      from '@angular/core';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { BooksComponent } from './books.component';
-import { PostNewBookFormComponent } from './postNewBook.component';
-import { ReserveButtonComponent } from './reserve-button.component';
+import { BooksComponent } from './components/books.component';
+import { PostNewBookFormComponent } from './components/postNewBook.component';
+import { ReserveButtonComponent } from './components/reserve-button.component';
+import { DeleteButtonComponent } from './components/delete-button.component';
+
+import { AdminStuffComponent } from './components/admin-stuff-component';
+import { AdminTableComponent } from './components/admin-table.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
@@ -21,8 +25,10 @@ import { MaterialModule } from '@angular/material';
         MaterialModule,
     ],
     declarations: [
-        AppComponent, BooksComponent,
-        PostNewBookFormComponent, ReserveButtonComponent,
+        AppComponent, BooksComponent, AdminStuffComponent,
+        PostNewBookFormComponent,
+        ReserveButtonComponent, DeleteButtonComponent,
+        AdminTableComponent
     ],
     bootstrap:    [ AppComponent ]
 })

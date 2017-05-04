@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Book } from './book';
-import { BookService } from './book.service';
+import { Book } from '../book';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'postNewBookForm',

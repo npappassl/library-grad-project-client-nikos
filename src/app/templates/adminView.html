@@ -1,5 +1,5 @@
-<div id="tableDiv">
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+<div>
+    <table id="adminTable" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <tr class="tableHeader">
             <th class="bookIdRow">Id</th>
             <th class="mdl-data-table__cell--non-numeric">Title</th>
@@ -11,7 +11,7 @@
             <td class="mdl-data-table__cell--non-numeric">{{ book.Title }}</td>
             <td class="mdl-data-table__cell--non-numeric">{{ book.Author }}</td>
             <td>{{ book.ISBN }}</td>
-            <td class="tdButton"><reserve-button [isReserved]="book.isReserved"  (onFinished)="handleEventFinished($event)"  bookId="{{book.Id}}"></reserve-button></td>
+            <td class="deleteButton"><delete-button [isReserved]="book.isReserved"  (onFinished)="handleEventFinished($event)"  bookId="{{book.Id}}"></delete-button></td>
         </tr>
     </table>
 </div>

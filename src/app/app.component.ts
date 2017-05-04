@@ -11,6 +11,7 @@ import { Reservation } from './reservation';
         <h1>Library</h1>
         <booksList (onFinished)="handleEventFinished($event)" [(books)]="books"></booksList>
         <postNewBookForm (onFinished)="handleEventFinished($event)" [(books)]="books"></postNewBookForm>
+        <adminStuff [(books)]="books" (onFinished)="handleEventFinished($event)"></adminStuff>
     `
 })
 export class AppComponent  implements OnInit {
@@ -30,10 +31,8 @@ export class AppComponent  implements OnInit {
         this.books.length = 0;
         for (let i of books) {
             const curRes = this.reservations.filter((res) => {
-                console.log(res.BookId, i.Id);
                 return res.BookId === i.Id;
             });
-            console.log('curREs', curRes);
             if (curRes.length === 1) {
                 i.isReserved = true;
             }else {
