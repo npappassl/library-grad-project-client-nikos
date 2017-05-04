@@ -2,7 +2,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BookService } from '../book.service';
 @Component({
     selector: 'delete-button',
-    template: `<button md-raised-button [ngClass]="{'reserved': isReserved,'free': !isReserved}" [disabled]="isReserved" (click)="sendDeleteRequest()"></button>`,
+    template: `
+        <button md-raised-button [ngClass]="{'reserved': isReserved,'free': !isReserved}"
+            [disabled]="isReserved" (click)="sendDeleteRequest()">
+        </button>
+    `,
     providers: [BookService],
     styles: [`
         button{

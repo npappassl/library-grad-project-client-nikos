@@ -7,7 +7,7 @@ import { BookService } from '../book.service';
   providers: [BookService],
   template: `
     <div id="addNewBookDiv">
-        <h2 (click)="postingBook = !postingBook;" >Add a new Book</h2>
+        <h2 class="clickable" id="postingBookH2" (click)="postingBook = !postingBook;" >Add a new Book</h2>
         <form *ngIf="postingBook" (ngSubmit)="onSubmit($event)" #newBookForm="ngForm">
                 <label>Title</label>
                 <input [value]="title" (input)="title=$event.target.value" placeholder="eg. A Draught of Sunshine" />
@@ -22,13 +22,15 @@ import { BookService } from '../book.service';
         </form>
     </div>
   `,
-  styles: [
-    `
+  styles: [`
         div{
             background-color: #585859;
             display: block;
             margin: 1em auto;
             padding: 0.5em 1em 1em 1em;
+        }
+        #postingBookH2{
+            color: #FF9009;
         }
         label{
             margin: 1em auto;
@@ -46,8 +48,10 @@ import { BookService } from '../book.service';
             display: inline-block;
             color: #383839;
             background-color: #c1e1a6;
+            font-size: 1em;
+            padding: 5px 5px 5px 5px;
         }
-        input:active, input:focus{
+        input:active, input:focus, input:focus:hover{
             background-color: #dff;
             border-color: #ff9009;
             outline: #ff9009;
@@ -64,8 +68,7 @@ import { BookService } from '../book.service';
             margin-bottom: 1em;
             display: block;
         }
-    `
-  ]
+    `]
 })
 export class PostNewBookFormComponent {
     @Input() books: Book[];

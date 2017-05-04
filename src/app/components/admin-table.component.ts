@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Book } from '../book';
+
 @Component({
   selector: 'adminTable',
   templateUrl: 'app/templates/adminView.html',
@@ -22,7 +24,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class AdminTableComponent  {
     @Input() books: Book[];
     @Output() onFinished = new EventEmitter<boolean>();
-
+    private isUpdating = -10;
+    handleIsUpdating(event): void {
+        console.log(event);
+        this.isUpdating = event;
+    }
     handleEventFinished(event): void {
         console.log('finished', event);
         this.onFinished.emit(event);

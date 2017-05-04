@@ -2,16 +2,26 @@
     <table id="adminTable" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <tr class="tableHeader">
             <th class="bookIdRow">Id</th>
+            <th class="bookIdRow">Index</th>
             <th class="mdl-data-table__cell--non-numeric">Title</th>
             <th class="mdl-data-table__cell--non-numeric">Author</th>
             <th>ISBN</th>
         </tr>
         <tr *ngFor="let book of books; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: odd, even: even }">
             <td [hidden]="!book.Id" class="bookIdRow">{{book.Id}}</td>
+            <td class="bookIdRow">{{i}} {{isUpdating===i}}</td>
             <td class="mdl-data-table__cell--non-numeric">{{ book.Title }}</td>
             <td class="mdl-data-table__cell--non-numeric">{{ book.Author }}</td>
             <td>{{ book.ISBN }}</td>
             <td class="deleteButton"><delete-button [isReserved]="book.isReserved"  (onFinished)="handleEventFinished($event)"  bookId="{{book.Id}}"></delete-button></td>
+            <td class="editButton"><edit-button  (onUpdating)="handleIsUpdating($event)" (onFinished)="handleEventFinished($event)"  book="{{book}}" index="{{i}}"></edit-button></td>
+            <td>{{isUpdating}}</td>
+            <form *ngIf="isUpdating===index">
+                <td [hidden]="!book.Id" class="bookIdRow">{{book.Id}}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ book.Title }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ book.Author }}</td>
+                <td>{{ book.ISBN }}</td>
+            </form>
         </tr>
     </table>
 </div>

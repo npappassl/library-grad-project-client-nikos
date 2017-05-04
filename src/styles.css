@@ -2,11 +2,34 @@ body{
     background-color: #C1E1A6;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 h1 {
   color: #FF9009;
-  font-size: 250%;
+  font-weight: 800;
+  font-size: 300%;
+  flex-grow: 1;
+  text-shadow: 2px 1px 3px #585859;
 }
-h2{
-    color: #FF9009;    
+.clickable{
+    cursor: pointer;
+}
+h2.clickable{
+    font-size: 1.8em;
+    font-weight: 700;
+    transition: all .3s ease;
+    text-shadow: 1px 2px 2px #383839;
+}
+h2.clickable:hover{
+    text-shadow: 2px 4px 5px #383839;
+}
+.pageButtonReveal{
+    flex-grow: 1;
+    display: block;
+    margin: 1em auto;
+    padding: 0.5em 1em 1em 1em;
+    margin: 2em auto;
+    display: block;
 }

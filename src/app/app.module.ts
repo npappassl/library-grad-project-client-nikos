@@ -8,6 +8,7 @@ import { BooksComponent } from './components/books.component';
 import { PostNewBookFormComponent } from './components/postNewBook.component';
 import { ReserveButtonComponent } from './components/reserve-button.component';
 import { DeleteButtonComponent } from './components/delete-button.component';
+import { EditButtonComponent } from './components/edit-button.component';
 
 import { AdminStuffComponent } from './components/admin-stuff-component';
 import { AdminTableComponent } from './components/admin-table.component';
@@ -27,7 +28,7 @@ import { MaterialModule } from '@angular/material';
     declarations: [
         AppComponent, BooksComponent, AdminStuffComponent,
         PostNewBookFormComponent,
-        ReserveButtonComponent, DeleteButtonComponent,
+        ReserveButtonComponent, DeleteButtonComponent, EditButtonComponent,
         AdminTableComponent
     ],
     bootstrap:    [ AppComponent ]

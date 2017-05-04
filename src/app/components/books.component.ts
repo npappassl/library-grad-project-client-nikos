@@ -10,6 +10,7 @@ import { Reservation } from  '../reservation';
         overflow-Y: scroll;
         height: 50vh;
         border: 1px rgba(88,88,89,.7) solid;
+        -1px 1px 5px 1px #585859
     }
     .tableHeader{
     }

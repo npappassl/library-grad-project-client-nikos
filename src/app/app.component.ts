@@ -15,31 +15,12 @@ import { Reservation } from './reservation';
     `
 })
 export class AppComponent  implements OnInit {
+    private pushBooksToModel = pushBooksToModelConst;
     books: Array<Book> = new Array<Book>();
     reservations: Array<Reservation> = new Array<Reservation>();
     ngOnInit(): void {
         this.getReservs();
         this.getBooks();
-    }
-    pushBooksToModel(books: Book[]): void {
-        if (this.reservations.length === 0 ) {
-            setTimeout(function(){
-                this.pushBooksToModel(books);
-            }, 1000);
-            return;
-        }
-        this.books.length = 0;
-        for (let i of books) {
-            const curRes = this.reservations.filter((res) => {
-                return res.BookId === i.Id;
-            });
-            if (curRes.length === 1) {
-                i.isReserved = true;
-            }else {
-                i.isReserved = false;
-            }
-            this.books.push(i);
-        }
     }
     getReservs(): void {
         this.reservService.getReservs().subscribe(
@@ -72,3 +53,24 @@ export class AppComponent  implements OnInit {
         private reservService: ReservationService
     ) { }
 }
+
+const pushBooksToModelConst = function pushBooksToModelFunc(books: Book[]): void {
+    if (this.reservations.length === 0 ) {
+        setTimeout(function(){
+            this.pushBooksToModel(books);
+        }, 1000);
+        return;
+    }
+    this.books.length = 0;
+    for (let i of books) {
+        const curRes = this.reservations.filter((res) => {
+            return res.BookId === i.Id;
+        });
+        if (curRes.length === 1) {
+            i.isReserved = true;
+        }else {
+            i.isReserved = false;
+        }
+        this.books.push(i);
+    }
+};
