@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ReservationService } from '../reservation.service';
+import { ReservationService } from '../services/reservation.service';
 import { Reservation } from '../models/reservation';
 @Component({
     selector: 'reserve-button',

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { BookService } from '../book.service';
+import { BookService } from '../services/book.service';
 import { Book } from '../models/book';
 @Component({
     selector: 'edit-button',
