@@ -16,6 +16,4 @@ describe('QuickStart E2E Tests', function () {
      expect(titles.count()).toEqual(2);
      expect(titles.get(0).getText()).toEqual('Add a new Book');
   });
-
-
 });
