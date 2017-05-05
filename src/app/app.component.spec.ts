@@ -18,6 +18,7 @@ describe('AppComponent', function () {
   let de: DebugElement;
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
+  let titles: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -40,6 +41,7 @@ describe('AppComponent', function () {
     fixture = TestBed.createComponent(AppComponent);
     comp = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('h1'));
+    titles = fixture.debugElement.query(By.css('h2'));
   });
 
   it('should create component', () => expect(comp).toBeDefined() );
@@ -50,4 +52,17 @@ describe('AppComponent', function () {
     expect(h1.innerText).toMatch(/Library/i,
       '<h1> should say something about "Library"');
   });
+  // my custom tests
+  it('should load two button h2', () => expect(titles).toBeDefined() );
+
+  it('should have expected <h2> text', () => {
+    fixture.detectChanges();
+    const h2 = document.getElementsByTagName('h2');
+    expect(h2[0].innerText).toMatch(/add/i,
+      '<h2> Add a new Book');
+    expect(h2[1].innerText).toMatch(/admin/i,
+      '<h2> Do Admin Stuff');
+
+  });
+
 });

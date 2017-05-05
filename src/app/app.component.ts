@@ -10,8 +10,7 @@ const pushBooksToModelConst = pushBooksToModelFunc;
 @Component({
   selector: 'my-app',
   providers: [BookService, ReservationService],
-  template:
-    `
+  template:`
         <h1>Library</h1>
         <booksList (onFinished)="handleEventFinished($event)" [(books)]="books"></booksList>
         <postNewBookForm (onFinished)="handleEventFinished($event)" [(books)]="books"></postNewBookForm>
@@ -19,7 +18,7 @@ const pushBooksToModelConst = pushBooksToModelFunc;
     `
 })
 export class AppComponent  implements OnInit {
-    private pushBooksToModel = pushBooksToModelConst.bind(this);
+    pushBooksToModel = pushBooksToModelConst.bind(this);
     books: Array<Book> = new Array<Book>();
     reservations: Array<Reservation> = new Array<Reservation>();
     ngOnInit(): void {
@@ -60,7 +59,7 @@ export class AppComponent  implements OnInit {
 function pushBooksToModelFunc(books: Book[]): void {
     if (this.reservations.length === 0 ) {
         setTimeout(function(){
-            pushBooksToModelFunc(books);
+            this.pushBooksToModel(books);
         }, 1000);
         return;
     }

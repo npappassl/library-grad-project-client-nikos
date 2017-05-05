@@ -81,8 +81,8 @@ module.exports = function(config) {
     proxies: {
       // required for modules fetched by SystemJS
       '/base/src/node_modules/': '/base/node_modules/',
-      // required for the template files to get loaded to testing   
-      '/app/templates': '/base/src/app/templates/'
+      // required for the template files to get loaded to testing
+      '/app/templates/': '/base/src/app/templates/'
     },
 
     exclude: [],
