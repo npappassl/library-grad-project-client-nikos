@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../models/book';
-
 @Component({
   selector: 'adminStuff',
   template: `
@@ -24,52 +23,50 @@ import { Book } from '../models/book';
     </div>
   `,
   styles: [`
-
-  div.adminStuffDiv{
-       position:fixed;
-       display: flex;
-       top:0;
-       left:0;
-       width: 100%;
-       height: 100%;
-       background-color: #383839;
-       color: #a6c38e;
-   }
-   #doAdminStuffButton{
-     background-color: #ff9009;
-     color: #383839;
-   }
-   #closeAdmin{
-       position: fixed;
-       font-size: 1.5em;
-       right: 2em;
-       top: 1em;
-   }
-   .questionDiv{
-       display: block;
-       width: 100%;
-       margin: 25% auto;
-   }
-   .question{
-       font-size: 1.6em;
-   }
-   .subquestion, .question{
-       display: block;
-   }
-   .yes, .no{
-       display: inline-block;
-       font-size: 2em;
-       margin: 1em 1em;
-       padding-left: 15px;
-       padding-bottom: 4px;
-       padding-right: 15px;
-       border-radius: 3px;
-       transition: all .4s ease;
-   }
-   .yes:hover, .no:hover{
-       background-color: rgba(255, 144, 9, .55);
-   }
-
+      div.adminStuffDiv{
+           position:fixed;
+           display: flex;
+           top:0;
+           left:0;
+           width: 100%;
+           height: 100%;
+           background-color: #383839;
+           color: #a6c38e;
+       }
+       #doAdminStuffButton{
+         background-color: #ff9009;
+         color: #383839;
+       }
+       #closeAdmin{
+           position: fixed;
+           font-size: 1.5em;
+           right: 2em;
+           top: 1em;
+       }
+       .questionDiv{
+           display: block;
+           width: 100%;
+           margin: 25% auto;
+       }
+       .question{
+           font-size: 1.6em;
+       }
+       .subquestion, .question{
+           display: block;
+       }
+       .yes, .no{
+           display: inline-block;
+           font-size: 2em;
+           margin: 1em 1em;
+           padding-left: 15px;
+           padding-bottom: 4px;
+           padding-right: 15px;
+           border-radius: 3px;
+           transition: all .4s ease;
+       }
+       .yes:hover, .no:hover{
+           background-color: rgba(255, 144, 9, .55);
+       }
   `]
   })
 export class AdminStuffComponent  {

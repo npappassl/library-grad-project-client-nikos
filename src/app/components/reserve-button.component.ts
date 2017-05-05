@@ -3,7 +3,12 @@ import { ReservationService } from '../services/reservation.service';
 import { Reservation } from '../models/reservation';
 @Component({
     selector: 'reserve-button',
-    template: `<button md-raised-button [ngClass]="{'reserved': isReserved,'free': !isReserved}" [disabled]="isReserved" (click)="sendReservation()"></button>`,
+    template: `
+        <button md-raised-button
+            [ngClass]="{'reserved': isReserved,'free': !isReserved}"
+            [disabled]="isReserved" (click)="sendReservation()">
+        </button>
+    `,
     providers: [ReservationService],
     styles: [`
         button.free::after{

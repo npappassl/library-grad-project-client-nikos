@@ -3,6 +3,10 @@ import { BookService } from './services/book.service';
 import { ReservationService } from './services/reservation.service';
 import { Book } from './models/book';
 import { Reservation } from './models/reservation';
+
+const pushBooksToModelConst = pushBooksToModelFunc;
+
+
 @Component({
   selector: 'my-app',
   providers: [BookService, ReservationService],
@@ -15,7 +19,7 @@ import { Reservation } from './models/reservation';
     `
 })
 export class AppComponent  implements OnInit {
-    private pushBooksToModel = pushBooksToModelConst;
+    private pushBooksToModel = pushBooksToModelConst.bind(this);
     books: Array<Book> = new Array<Book>();
     reservations: Array<Reservation> = new Array<Reservation>();
     ngOnInit(): void {
@@ -53,10 +57,10 @@ export class AppComponent  implements OnInit {
     ) { }
 }
 
-const pushBooksToModelConst = function pushBooksToModelFunc(books: Book[]): void {
+function pushBooksToModelFunc(books: Book[]): void {
     if (this.reservations.length === 0 ) {
         setTimeout(function(){
-            pushBooksToModelConst(books);
+            pushBooksToModelFunc(books);
         }, 1000);
         return;
     }

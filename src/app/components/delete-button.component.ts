@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BookService } from '../services/book.service';
+
 @Component({
     selector: 'delete-button',
     template: `
