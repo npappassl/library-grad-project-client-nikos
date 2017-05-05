@@ -14,7 +14,8 @@ module.exports = function(config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter')
+      require('karma-jasmine-html-reporter'),
+      require('karma-ng-html2js-preprocessor')
     ],
 
     client: {
@@ -84,7 +85,8 @@ module.exports = function(config) {
     },
 
     exclude: [],
-    preprocessors: {},
+    preprocessors: {
+    },
     reporters: ['progress', 'kjhtml'],
 
     port: 9876,
