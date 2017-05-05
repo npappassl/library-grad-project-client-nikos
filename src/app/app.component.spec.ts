@@ -7,6 +7,8 @@ import { DeleteButtonComponent } from './components/delete-button.component';
 import { EditButtonComponent } from './components/edit-button.component';
 import { AdminTableComponent } from './components/admin-table.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By }           from '@angular/platform-browser';
@@ -19,12 +21,17 @@ describe('AppComponent', function () {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+        imports: [
+            HttpModule,
+            FormsModule, ReactiveFormsModule
+        ],
         declarations: [
             AppComponent, BooksComponent, AdminStuffComponent,
             PostNewBookFormComponent,
             ReserveButtonComponent, DeleteButtonComponent, EditButtonComponent,
             AdminTableComponent
         ]
+
     })
     .compileComponents();
   }));

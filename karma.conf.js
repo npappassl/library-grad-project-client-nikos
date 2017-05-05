@@ -80,7 +80,9 @@ module.exports = function(config) {
     // Proxied base paths for loading assets
     proxies: {
       // required for modules fetched by SystemJS
-      '/base/src/node_modules/': '/base/node_modules/'
+      '/base/src/node_modules/': '/base/node_modules/',
+      // required for the template files to get loaded to testing   
+      '/app/templates': '/base/src/app/templates/'
     },
 
     exclude: [],
