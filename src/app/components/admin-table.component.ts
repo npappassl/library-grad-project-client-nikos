@@ -21,8 +21,7 @@ import { Reservation } from '../models/reservation';
             margin: 3em auto;
             overflow:scroll;
         }
-  `]
-  })
+  `]})
 export class AdminTableComponent  {
     @Input() books: Book[];
     @Input() reservations: Reservation[];
