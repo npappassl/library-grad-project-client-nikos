@@ -11,6 +11,7 @@ import { Reservation } from '../models/reservation';
             <adminTable *ngIf="userIsSure === true" [(books)]="books" [(reservations)]="reservations"
                 (onFinished)="handleEventFinished($event)"></adminTable>
             <div *ngIf="userIsSure === undefined" class="questionDiv">
+                <h2 class="clickable" (click)="doingAdminStuff = !doingAdminStuff;"> Do Admin stuff</h2>
                 <span class="question">
                     Are you sure you want to mess with the database?<br/>
                 </span>
@@ -20,13 +21,13 @@ import { Reservation } from '../models/reservation';
                 <span class="yes clickable" (click)="userIsSure = true;">yes</span>
                 <span class="no clickable" (click)="doingAdminStuff = false;">no</span>
             </div>
-            <h2 class="clickable" (click)="doingAdminStuff = !doingAdminStuff;"> Do Admin stuff</h2>
             <span id="closeAdmin" class="clickable" (click)="doingAdminStuff = false;">x</span>
         </div>
     </div>
   `,
   styles: [`
       div.adminStuffDiv{
+          text-align: center;
            position:fixed;
            display: flex;
            top:0;
@@ -35,6 +36,7 @@ import { Reservation } from '../models/reservation';
            height: 100%;
            background-color: #383839;
            color: #a6c38e;
+           opacity: .94;
        }
        #doAdminStuffButton{
          background-color: #ff9009;
@@ -48,8 +50,8 @@ import { Reservation } from '../models/reservation';
        }
        .questionDiv{
            display: block;
-           width: 100%;
-           margin: 25% auto;
+           width: 100vw;
+           margin: 10% auto;
        }
        .question{
            font-size: 1.6em;
