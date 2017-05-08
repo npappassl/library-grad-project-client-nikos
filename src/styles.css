@@ -26,7 +26,7 @@ h2.clickable:hover{
     text-shadow: 2px 4px 5px #222224;
 }
 .pageButtonReveal{
-    border: solid 2px white;
+    border: solid 1px #78816f;
     flex-grow: 1;
     display: block;
     margin: 1em auto;
