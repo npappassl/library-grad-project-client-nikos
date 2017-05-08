@@ -6,7 +6,7 @@ import { BookService } from '../services/book.service';
   selector: 'postNewBookForm',
   providers: [BookService],
   template: `
-    <div id="addNewBookDiv">
+    <div id="addNewBookDiv" class="pageButtonReveal">
         <h2 class="clickable" id="postingBookH2" (click)="postingBook = !postingBook;" >Add a new Book</h2>
         <form *ngIf="postingBook" (ngSubmit)="onSubmit($event)" #newBookForm="ngForm">
                 <label>Title</label>

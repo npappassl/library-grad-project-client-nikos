@@ -5,7 +5,7 @@ import { Reservation } from '../models/reservation';
 @Component({
   selector: 'adminStuff',
   template: `
-    <div id="doAdminStuffButton" class=pageButtonReveal>
+    <div id="doAdminStuffButton" class="pageButtonReveal">
         <h2 class="clickable" (click)="doingAdminStuff = !doingAdminStuff;"> Do Admin stuff</h2>
         <div class="adminStuffDiv" *ngIf="doingAdminStuff">
             <adminTable *ngIf="userIsSure === true" [(books)]="books" [(reservations)]="reservations"
