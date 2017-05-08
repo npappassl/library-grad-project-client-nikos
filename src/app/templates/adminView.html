@@ -1,0 +1,24 @@
+<div>
+    <table id="adminTable" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+        <tr class="tableHeader">
+            <th class="bookIdRow">Id</th>
+            <th class="bookIdRow">Index</th>
+            <th class="mdl-data-table__cell--non-numeric">Title</th>
+            <th class="mdl-data-table__cell--non-numeric">Author</th>
+            <th>ISBN</th>
+        </tr>
+        <tr *ngFor="let book of books; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: odd, even: even }">
+            <td  class="bookIdRow">{{book.Id}}</td>
+            <td [hidden]="book.isUpdating" class="mdl-data-table__cell--non-numeric">{{ book.Title }}</td>
+            <td [hidden]="!book.isUpdating"><input [value]="book.Title" (input)="book.Title=$event.target.value" />
+            <td [hidden]="book.isUpdating" class="mdl-data-table__cell--non-numeric">{{ book.Author }}</td>
+            <td [hidden]="!book.isUpdating"><input [value]="book.Author" (input)="book.Author=$event.target.value" />
+            <td [hidden]="book.isUpdating">{{ book.ISBN }}</td>
+            <td [hidden]="!book.isUpdating"><input [value]="book.ISBN" (input)="book.ISBN=$event.target.value" />
+            <td>{{book.isReserved}}</td>
+            <td class="deleteButton"><delete-button [isReserved]="book.isReserved"  (onFinished)="handleEventFinished($event)"  bookId="{{book.Id}}"></delete-button></td>
+            <td class="editButton"><edit-button  (onFinished)="handleEventFinished($event)"  [book]="book"></edit-button></td>
+            <td><unreserve-button [reservations]="reservations" [book]="book" (onFinished)="handleEventFinished($event)"></unreserve-button>
+        </tr>
+    </table>
+</div>

@@ -1,21 +1,37 @@
-import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-
 import { AppComponent }  from './app.component';
-import { BooksComponent } from './books.component';
-import { PostNewBookFormComponent } from './postNewBook.component';
-import { ReserveButtonComponent } from './reserve-button.component';
+import { NgModule }      from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+import { BooksComponent } from './components/books.component';
+import { PostNewBookFormComponent } from './components/postNewBook.component';
+import { ReserveButtonComponent } from './components/reserve-button.component';
+import { DeleteButtonComponent } from './components/delete-button.component';
+import { EditButtonComponent } from './components/edit-button.component';
+import { UnreserveButtonComponent } from './components/unreserve-button.component';
+
+import { AdminStuffComponent } from './components/admin-stuff-component';
+import { AdminTableComponent } from './components/admin-table.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@angular/material';
 
 @NgModule({
     imports: [
-        BrowserModule, HttpModule,
-        FormsModule, ReactiveFormsModule
+        BrowserModule,
+        HttpModule,
+        BrowserAnimationsModule,
+        FormsModule, ReactiveFormsModule,
+        // AnimationModule,
+        MaterialModule,
     ],
     declarations: [
-        AppComponent, BooksComponent,
-        PostNewBookFormComponent, ReserveButtonComponent
+        AppComponent, BooksComponent, AdminStuffComponent,
+        PostNewBookFormComponent,
+        ReserveButtonComponent, DeleteButtonComponent,
+        EditButtonComponent, UnreserveButtonComponent,
+        AdminTableComponent
     ],
     bootstrap:    [ AppComponent ]
 })
