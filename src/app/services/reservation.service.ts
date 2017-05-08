@@ -37,4 +37,11 @@ export class ReservationService {
             // ...errors if any
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     };
+    deleteReservation(id: number): Observable<Reservation[]> {
+        console.log(id);
+        const options: RequestOptions = new RequestOptions({ headers: this.headers }); // Create a request option
+        return this.http.delete(this.reservUrl + '/' + id, options)
+                        .map((res: Response) => res.json())
+                        .catch((error: any) => Observable.throw(error.json.error || 'Server Error'));
+    }
 }

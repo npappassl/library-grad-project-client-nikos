@@ -3,6 +3,8 @@ import { BooksComponent } from './components/books.component';
 import { AdminStuffComponent } from './components/admin-stuff-component';
 import { PostNewBookFormComponent } from './components/postNewBook.component';
 import { ReserveButtonComponent } from './components/reserve-button.component';
+import { UnreserveButtonComponent } from './components/unreserve-button.component';
+
 import { DeleteButtonComponent } from './components/delete-button.component';
 import { EditButtonComponent } from './components/edit-button.component';
 import { AdminTableComponent } from './components/admin-table.component';
@@ -29,7 +31,8 @@ describe('AppComponent', function () {
         declarations: [
             AppComponent, BooksComponent, AdminStuffComponent,
             PostNewBookFormComponent,
-            ReserveButtonComponent, DeleteButtonComponent, EditButtonComponent,
+            ReserveButtonComponent, DeleteButtonComponent,
+            EditButtonComponent, UnreserveButtonComponent,
             AdminTableComponent
         ]
 

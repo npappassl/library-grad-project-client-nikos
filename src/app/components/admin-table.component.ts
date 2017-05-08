@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../models/book';
+import { Reservation } from '../models/reservation';
+
 
 @Component({
   selector: 'adminTable',
@@ -23,12 +25,8 @@ import { Book } from '../models/book';
   })
 export class AdminTableComponent  {
     @Input() books: Book[];
+    @Input() reservations: Reservation[];
     @Output() onFinished = new EventEmitter<boolean>();
-    private isUpdating = -10;
-    handleIsUpdating(event): void {
-        console.log(event);
-        this.isUpdating = event;
-    }
     handleEventFinished(event): void {
         console.log('finished', event);
         this.onFinished.emit(event);

@@ -95,7 +95,7 @@ export class PostNewBookFormComponent {
     postNewBook(): void {
         console.log('spostnewBook', this.title);
         this.bookService.postNewBook(
-            new Book(null, this.title, this.isbn, this.author, this.publishDate, null)
+            new Book(null, this.title, this.isbn, this.author, this.publishDate, null, null)
         ).subscribe(
             books => {
                 this.onFinished.emit(true);

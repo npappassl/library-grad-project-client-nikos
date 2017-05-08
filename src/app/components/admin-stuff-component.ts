@@ -1,12 +1,15 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../models/book';
+import { Reservation } from '../models/reservation';
+
 @Component({
   selector: 'adminStuff',
   template: `
     <div id="doAdminStuffButton" class=pageButtonReveal>
         <h2 class="clickable" (click)="doingAdminStuff = !doingAdminStuff;"> Do Admin stuff</h2>
         <div class="adminStuffDiv" *ngIf="doingAdminStuff">
-            <adminTable *ngIf="userIsSure === true" [(books)]="books" (onFinished)="handleEventFinished($event)"></adminTable>
+            <adminTable *ngIf="userIsSure === true" [(books)]="books" [(reservations)]="reservations"
+                (onFinished)="handleEventFinished($event)"></adminTable>
             <div *ngIf="userIsSure === undefined" class="questionDiv">
                 <span class="question">
                     Are you sure you want to mess with the database?<br/>
@@ -71,6 +74,7 @@ import { Book } from '../models/book';
   })
 export class AdminStuffComponent  {
     @Input() books: Book[];
+    @Input() reservations: Reservation[];
     @Output() onFinished = new EventEmitter<boolean>();
     userIsSure: boolean;
     doingAdminStuff = false;

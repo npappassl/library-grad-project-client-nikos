@@ -27,19 +27,17 @@ import { Book } from '../models/book';
 })
 export class EditButtonComponent {
     @Input() book: Book;
-    @Input() index: number;
     @Input() isUpdating: number;
     @Output() onUpdating = new EventEmitter<number>();
     @Output() onFinished = new EventEmitter<boolean>();
 
     constructor(private booService: BookService) {}
     handleEditButton() {
-        if (this.index >= 0) {
-            this.isUpdating = this.index;
-        } else {
-            this.isUpdating = -1;
+        if (this.book.isUpdating) {
+            this.sendUpdateRequest();
         }
-        this.onUpdating.emit(this.isUpdating);
+        this.book.isUpdating = !this.book.isUpdating;
+        this.onUpdating.emit(null);
     }
     sendUpdateRequest() {
         this.booService.updateBookRequest(this.book).subscribe(
