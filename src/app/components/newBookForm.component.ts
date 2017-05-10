@@ -5,15 +5,18 @@ import { Book } from '../models/book';
 @Component({
     selector: 'new-book-form',
     template: `
-        <form (ngSubmit)="onSubmit($event)" #newBookForm="ngForm">
+        <form (ngSubmit)="onSubmit(newBookForm)" #newBookForm="ngForm">
                 <label>Title</label>
-                <input [value]="title" (input)="title=$event.target.value" placeholder="eg. A Draught of Sunshine" />
+                <input  name="Title" placeholder="eg. A Draught of Sunshine" ngModel required/>
+
                 <label>ISBN</label>
-                <input [value]="isbn" (input)="isbn=$event.target.value" placeholder="eg. 1234567890123" minLength="10" maxlength="13"/>
+                <input name="ISBN" placeholder="eg. 1234567890123" minLength="10" maxlength="13" ngModel/>
+
                 <label>Author</label>
-                <input [value]="author" (input)="author=$event.target.value" placeholder="eg. John Keats"/>
+                <input name="Author" placeholder="eg. John Keats" ngModel required/>
+
                 <label>PublishDate</label>
-                <input type="date" [value]="publishDate" (input)="publishDate=$event.target.value" placeholder="eg. 14/10/2016"/>
+                <input type="date" name="PublishDate" placeholder="eg. 14/10/2016" ngModel />
 
             <button md-raised-button id="addNewBookButton" type="submit" [disabled]="!newBookForm.form.valid">Add</button>
         </form>
@@ -52,30 +55,23 @@ import { Book } from '../models/book';
             outline-style: solid;
             outline-width: 2px;
         }
+        #addNewBookButton{
+          margin: 2em auto;
+          margin-bottom: 1em;
+          display: block;
+      }
     `]
 })
 export class NewBookFormComponent {
-    title = '';
-    isbn = '';
-    author = '';
-    publishDate = '';
     @Output() onFinished = new EventEmitter<boolean>();
     constructor(private bookService: BookService) { }
-    onSubmit(event): void {
-        event.preventDefault();
-        this.postNewBook();
-        this.formReset();
+    onSubmit(form: any): void {
+        this.postNewBook(form.value);
+        form.reset();
     }
-    formReset(): void {
-        this.title = '';
-        this.isbn = '';
-        this.author = '';
-        this.publishDate = '';
-    }
-    postNewBook(): void {
-        console.log('spostnewBook', this.title);
+    postNewBook(formValue: any): void {
         this.bookService.postNewBook(
-            new Book(null, this.title, this.isbn, this.author, this.publishDate, null, null)
+            new Book(null, formValue.Title, formValue.ISBN, formValue.Author, formValue.PublishDate, null, null)
         ).subscribe(
             books => {
                 this.onFinished.emit(true);
