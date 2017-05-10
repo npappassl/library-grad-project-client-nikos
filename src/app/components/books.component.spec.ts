@@ -2,6 +2,7 @@ import { AppComponent } from '../app.component';
 import { BooksComponent } from './books.component';
 import { AdminStuffComponent } from './admin-stuff-component';
 import { PostNewBookFormComponent } from './postNewBook.component';
+import { NewBookFormComponent } from './newBookForm.component';
 import { ReserveButtonComponent } from './reserve-button.component';
 import { UnreserveButtonComponent } from './unreserve-button.component';
 
@@ -30,7 +31,7 @@ describe('BooksComponent', function () {
         ],
         declarations: [
             AppComponent, BooksComponent, AdminStuffComponent,
-            PostNewBookFormComponent,
+            PostNewBookFormComponent, NewBookFormComponent,
             ReserveButtonComponent, DeleteButtonComponent,
             EditButtonComponent, UnreserveButtonComponent,
             AdminTableComponent

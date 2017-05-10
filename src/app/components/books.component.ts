@@ -23,7 +23,7 @@ import { Reservation } from  '../models/reservation';
     td{
         line-height: 36px;
         margin: 1em;
-        width: 32%;
+        width: 25%;
         font-weight: 600;
         list-style: none;
     }

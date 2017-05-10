@@ -2,15 +2,18 @@
     <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <tr class="tableHeader">
             <th class="bookIdRow">Id</th>
-            <th class="mdl-data-table__cell--non-numeric">Title</th>
-            <th class="mdl-data-table__cell--non-numeric">Author</th>
+            <th>Title</th>
+            <th>Author</th>
             <th>ISBN</th>
+            <th>Publish Date</th>
         </tr>
+        <div [hidden]="books" class="mdl-spinner mdl-js-spinner is-active"></div>
         <tr *ngFor="let book of books; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: odd, even: even }">
             <td [hidden]="!book.Id" class="bookIdRow">{{book.Id}}</td>
-            <td class="mdl-data-table__cell--non-numeric">{{ book.Title }}</td>
-            <td class="mdl-data-table__cell--non-numeric">{{ book.Author }}</td>
+            <td>{{ book.Title }}</td>
+            <td>{{ book.Author }}</td>
             <td>{{ book.ISBN }}</td>
+            <td>{{ book.PublishDate }}</td>
             <td class="tdButton"><reserve-button [isReserved]="book.isReserved"  (onFinished)="handleEventFinished($event)"  bookId="{{book.Id}}"></reserve-button></td>
         </tr>
     </table>

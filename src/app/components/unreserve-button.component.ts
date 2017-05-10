@@ -6,7 +6,7 @@ import { Book } from '../models/book';
 @Component({
     selector: 'unreserve-button',
     template: `
-        <button md-raised-button
+        <button md-raised-button 
             [ngClass]="{'reserved': book.isReserved,'free': !book.isReserved}"
             [disabled]="!book.isReserved" (click)="sendDeleteReservation()">
         </button>

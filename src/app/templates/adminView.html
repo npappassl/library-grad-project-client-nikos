@@ -16,7 +16,10 @@
             <td [hidden]="!book.isUpdating"><input [value]="book.Author" (input)="book.Author=$event.target.value" />
 
             <td [hidden]="book.isUpdating">{{ book.ISBN }}</td>
-            <td [hidden]="!book.isUpdating"><input [value]="book.ISBN" (input)="book.ISBN=$event.target.value" />
+            <td [hidden]="!book.isUpdating"><input [value]="book.ISBN" (input)="book.ISBN=$event.target.value" minLength="10" maxlength="13"/>
+
+            <td [hidden]="book.isUpdating">{{ book.PublishDate }}</td>
+            <td [hidden]="!book.isUpdating"><input type="date" [value]="book.PublishDate" (input)="book.PublishDate=$event.target.value" />
 
             <td class="deleteButton"><delete-button [isReserved]="book.isReserved"  (onFinished)="handleEventFinished($event)"  bookId="{{book.Id}}"></delete-button></td>
             <td class="editButton"><edit-button  (onFinished)="handleEventFinished($event)"  [book]="book"></edit-button></td>

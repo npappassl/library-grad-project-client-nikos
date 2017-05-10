@@ -9,9 +9,10 @@ body{
 h1 {
   color: #FF9009;
   font-weight: 800;
+  font-variant: small-caps;
   font-size: 300%;
   flex-grow: 1;
-  text-shadow: 2px 1px 3px #585859;
+  text-shadow: 0 0 3px black, 2px 1px 17px #585859;
 }
 .clickable{
     cursor: pointer;
@@ -33,4 +34,10 @@ h2.clickable:hover{
     padding: 0.5em 1em 1em 1em;
     margin: 2em auto;
     display: block;
+}
+button{
+    opacity: 0.8;
+}
+button:hover{
+    opacity:0.4;
 }

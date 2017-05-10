@@ -10,12 +10,6 @@ import { BookService } from '../services/book.service';
     `,
     providers: [BookService],
     styles: [`
-        button{
-            opacity: 0.8;
-        }
-        button:hover{
-            opacity:0.4;
-        }
         button.free::after{
             content: "Delete";
         }

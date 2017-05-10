@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 
 import { BooksComponent } from './components/books.component';
 import { PostNewBookFormComponent } from './components/postNewBook.component';
+import { NewBookFormComponent } from './components/newBookForm.component';
+
 import { ReserveButtonComponent } from './components/reserve-button.component';
 import { DeleteButtonComponent } from './components/delete-button.component';
 import { EditButtonComponent } from './components/edit-button.component';
@@ -28,7 +30,7 @@ import { MaterialModule } from '@angular/material';
     ],
     declarations: [
         AppComponent, BooksComponent, AdminStuffComponent,
-        PostNewBookFormComponent,
+        PostNewBookFormComponent, NewBookFormComponent,
         ReserveButtonComponent, DeleteButtonComponent,
         EditButtonComponent, UnreserveButtonComponent,
         AdminTableComponent

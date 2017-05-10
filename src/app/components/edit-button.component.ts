@@ -11,12 +11,6 @@ import { Book } from '../models/book';
         </button>`,
     providers: [BookService],
     styles: [`
-        button{
-            opacity: 0.8;
-        }
-        button:hover{
-            opacity:0.4;
-        }
         button.free::after{
             content: "Edit";
         }

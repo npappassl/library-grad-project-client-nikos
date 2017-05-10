@@ -13,7 +13,7 @@ const pushBooksToModelConst = pushBooksToModelFunc;
   template: `
         <h1>Library</h1>
         <booksList (onFinished)="handleEventFinished($event)" [(books)]="books"></booksList>
-        <postNewBookForm (onFinished)="handleEventFinished($event)" [(books)]="books"></postNewBookForm>
+        <postNewBookForm (onFinished)="handleEventFinished($event)"></postNewBookForm>
         <adminStuff [(books)]="books" [(reservations)]="reservations" (onFinished)="handleEventFinished($event)"></adminStuff>
     `
 })
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
         self.getReservs();
         setTimeout(function(){
             self.getBooks();
-        },100);
+        }, 100);
     }
     getReservs(): void {
         this.reservService.getReservs().subscribe(

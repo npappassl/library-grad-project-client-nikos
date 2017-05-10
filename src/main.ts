@@ -1,8 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-// TODO 
+// TODO
 // When production
 // import {enableProdMode} from '@angular/core';
-
 import { AppModule } from './app/app.module';
 // TODO
 // When production
