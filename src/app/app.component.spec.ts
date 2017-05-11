@@ -51,7 +51,6 @@ describe('AppComponent', function () {
   it('should create component', () => expect(comp).toBeDefined() );
 
   it('should have expected <h1> text', () => {
-    fixture.detectChanges();
     const h1 = de.nativeElement;
     expect(h1.innerText).toMatch(/Library/i,
       '<h1> should say something about "Library"');
@@ -60,7 +59,6 @@ describe('AppComponent', function () {
   it('should load two button h2', () => expect(titles).toBeDefined() );
 
   it('should have expected <h2> text', () => {
-    fixture.detectChanges();
     const h2 = document.getElementsByTagName('h2');
     expect(h2[0].innerText).toMatch(/add/i,
       '<h2> Add a new Book');
