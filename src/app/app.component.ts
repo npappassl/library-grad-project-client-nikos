@@ -3,9 +3,7 @@ import { BookService } from './services/book.service';
 import { ReservationService } from './services/reservation.service';
 import { Book } from './models/book';
 import { Reservation } from './models/reservation';
-
-const pushBooksToModelConst = pushBooksToModelFunc;
-
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'my-app',
@@ -18,40 +16,21 @@ const pushBooksToModelConst = pushBooksToModelFunc;
     `
 })
 export class AppComponent implements OnInit {
-    pushBooksToModel = pushBooksToModelConst.bind(this);
+    pushBooksToModel = pushBooksToModel.bind(this);
+    refreshData = refreshData.bind(this);
     books: Array<Book> = new Array<Book>();
     reservations: Array<Reservation> = new Array<Reservation>();
     ngOnInit(): void {
-        const self = this;
-        self.getReservs();
-        setTimeout(function(){
-            self.getBooks();
-        }, 100);
+        this.refreshData();
     }
-    getReservs(): void {
-        this.reservService.getReservs().subscribe(
-            reservs => {
-                this.reservations = reservs;
-            },
-            err => {
-                console.log(err);
-            }
-        );
+    getReservs(): Observable<Reservation[]> {
+        return this.reservService.getReservs();
     }
-    getBooks(): void {
-      this.bookService.getBooks()
-                        .subscribe(
-                            books => {
-                                this.pushBooksToModel(books);
-                            },
-                            err => {
-                                console.log(err);
-                            });
+    getBooks(): Observable<Book[]> {
+      return this.bookService.getBooks();
     }
     handleEventFinished(event) {
-        console.log(event);
-        this.getReservs();
-        this.getBooks();
+        this.refreshData();
     }
     constructor(
         private bookService: BookService,
@@ -59,7 +38,18 @@ export class AppComponent implements OnInit {
     ) { }
 }
 
-function pushBooksToModelFunc(books: Book[]): void {
+function refreshData(): void {
+    const self = this;
+    let reservObs = self.getReservs();
+    let bookObs =   self.getBooks();
+    Observable.forkJoin([reservObs, bookObs])
+   .subscribe((response) => {
+       self.reservations = response[0];
+       self.pushBooksToModel(response[1]);
+   });
+};
+
+function pushBooksToModel(books: Book[]): void {
     if (this.reservations.length === 0 ) {
         setTimeout(function(){
             this.pushBooksToModelFunc(books);

@@ -5,20 +5,32 @@ import { Book } from '../models/book';
 @Component({
     selector: 'new-book-form',
     template: `
-        <form (ngSubmit)="onSubmit(newBookForm)" #newBookForm="ngForm">
-                <label>Title</label>
-                <input  name="Title" placeholder="eg. A Draught of Sunshine" ngModel required/>
+        <form #newBookForm="ngForm" (ngSubmit)="onSubmit(newBookForm)">
+                 <label for="Title">Title</label>
+                 <input name="Title" placeholder="eg. A Draught of Sunshine" [(ngModel)]="book.Title" #Title="ngModel" required/>
 
-                <label>ISBN</label>
-                <input name="ISBN" placeholder="eg. 1234567890123" minLength="10" maxlength="13" ngModel/>
+                <label for="ISBN">ISBN</label>
+                <input type="text" id="ISBN" class="form-control"
+                    placeholder="eg. 1234567890123"
+                    required minlength="10" maxlength="13"
+                    name="ISBN" [(ngModel)]="book.ISBN"
+                    #ISBN="ngModel"/>
+                <div *ngIf="ISBN.errors">
+                    <div [hidden]="!ISBN.errors.required">
+                      Name is required
+                    </div>
+                    <div [hidden]="!ISBN.errors.minlength">
+                        ISBN must be defined as a value of either 10 or 13 integers.                    </div>
+                    <div [hidden]="!ISBN.errors.maxlength">
+                        ISBN must be defined as a value of either 10 or 13 integers.                    </div>
+                </div>
+                <label for="Author">Author</label>
+                <input name="Author" placeholder="eg. John Keats" [(ngModel)]="book.Author" #Author="ngModel" required/>
 
-                <label>Author</label>
-                <input name="Author" placeholder="eg. John Keats" ngModel required/>
-
-                <label>PublishDate</label>
+                <label for="PublishDate">PublishDate</label>
                 <input type="date" name="PublishDate" placeholder="eg. 14/10/2016" ngModel />
 
-            <button md-raised-button id="addNewBookButton" type="submit" [disabled]="!newBookForm.form.valid">Add</button>
+            <button md-raised-button id="addNewBookButton" type="submit" [disabled]="!newBookForm.form.valid||ISBN.errors">Add</button>
         </form>
     `,
     providers: [BookService],
@@ -63,6 +75,7 @@ import { Book } from '../models/book';
     `]
 })
 export class NewBookFormComponent {
+    book = new Book(null, null, null, null, null, null, null);
     @Output() onFinished = new EventEmitter<boolean>();
     constructor(private bookService: BookService) { }
     onSubmit(form: any): void {
